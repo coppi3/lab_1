@@ -91,7 +91,7 @@ pub fn encode(string: &str) -> Vec<u8> {
 }
 
 //copied from github to print arrays in binary
-pub struct V<'a>(&'a Vec<u8>);
+pub struct V<'a>(pub &'a Vec<u8>);
 
 // custom output
 impl fmt::Binary for V<'_> {
