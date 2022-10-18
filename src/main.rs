@@ -1,3 +1,6 @@
+mod utils;
+use utils::utils::{encode, V};
+
 fn main() {
-    println!("Hello, world!");
+    const init_msg: &str = "Цыдыпов А.О.";
 }

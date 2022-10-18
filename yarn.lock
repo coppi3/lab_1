@@ -2,3 +2,7 @@
 # yarn lockfile v1
 
 
+"git-cz@^4.9.0":
+  "integrity" "sha512-cSRL8IIOXU7UFLdbziCYqg8f8InwLwqHezkiRHNSph7oZqGv0togId1kMTfKil6gzK0VaSXeVBb4oDl0fQCHiw=="
+  "resolved" "https://registry.npmjs.org/git-cz/-/git-cz-4.9.0.tgz"
+  "version" "4.9.0"
