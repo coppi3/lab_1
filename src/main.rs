@@ -1,12 +1,15 @@
 mod utils;
 use std::fmt;
 use std::fs;
-use utils::utils::{encode, V};
+use utils::first::{encode, V};
+use utils::manchester::manchester_code;
+
 const DEL: &str = "------------------------------------------------------";
 
 fn main() {
     // First task:
     const INITMSG: &str = "Цыдыпов А.О.";
+
     let encoded_msg = encode(INITMSG);
     println!("{DEL}");
     println!("Исходное сообщение: {}", INITMSG);
@@ -18,25 +21,15 @@ fn main() {
         encoded_msg.len() * 8
     );
     println!("{DEL}");
-    let tmp = manchester_code(&encoded_msg);
 
     // Second task:
+    let manchester = manchester_code(&encoded_msg[0..4]);
+    // println!("{manchester}");
+    fs::write("../out/manchester.csv", manchester).expect("Can't write to manchester.csv");
 }
 
-fn manchester_code(inp: &[u8]) -> String {
-    let out = String::new();
-    for byte in inp {
-        for i in (0..8).rev() {
-            if byte >> i & 1 == 1 {
-                /*
-                 * TO DO
-                 */
-                println!("{}", i);
-            }
-        }
-    }
-    out
-}
+
+
 
 /*
  * To do:
