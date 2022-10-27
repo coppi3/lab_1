@@ -4,8 +4,8 @@ pub fn nrz_code(inp: &[u8]) -> String {
 
     for byte in inp {
         for i in (0..8).rev() {
-            out = format!("{}{};{}\n{1};{2}\n", out, time, (1 & byte >> i));
-            time += 1;
+            out = format!("{}{};{}\n{3};{2}\n", out, time, (1 & byte >> i), time + 1);
+            time += 2;
         }
     }
     out

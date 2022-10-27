@@ -4,11 +4,13 @@ use std::fs;
 use utils::first::{encode, V};
 use utils::manchester::manchester_code;
 use utils::nrz::nrz_code;
+use utils::rz::rz_code;
 const DEL: &str = "------------------------------------------------------";
 
 fn main() {
     // First task:
-    const INITMSG: &str = "Цыдыпов А.О.";
+    // const INITMSG: &str = "Цыдыпов А.О.";
+    const INITMSG: &str = "Николаев Г.В.";
 
     let encoded_msg = encode(INITMSG);
     println!("{DEL}");
@@ -28,6 +30,8 @@ fn main() {
     fs::write("../out/manchester.csv", manchester).expect("Can't write to manchester.csv");
     let nrz = nrz_code(&encoded_msg[0..4]);
     fs::write("../out/nrz.csv", nrz).expect("Can't write to nrz.csv");
+    let rz = rz_code(&encoded_msg[0..4]);
+    fs::write("../out/rz.csv", rz).expect("Can't write to rz.csv");
 }
 
 
