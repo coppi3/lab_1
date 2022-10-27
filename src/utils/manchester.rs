@@ -11,7 +11,7 @@ pub fn manchester_code(inp: &[u8]) -> String {
     for byte in inp {
         for i in (0..8).rev() {
             for clock in 0..2 {
-                out = format!("{2}{0};{1};\n", time, (clock ^ (1 & byte >> i)), out);
+                out = format!("{2}{0};{1}\n", time, (clock ^ (1 & byte >> i)), out);
             }
             time += 1;
         }
