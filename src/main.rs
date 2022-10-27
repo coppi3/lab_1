@@ -5,12 +5,13 @@ use utils::first::{encode, V};
 use utils::manchester::manchester_code;
 use utils::nrz::nrz_code;
 use utils::rz::rz_code;
+use utils::ami::ami_code;
+use utils::mlt3::mlt3_code;
 const DEL: &str = "------------------------------------------------------";
 
 fn main() {
     // First task:
-    // const INITMSG: &str = "Цыдыпов А.О.";
-    const INITMSG: &str = "Николаев Г.В.";
+     const INITMSG: &str = "Цыдыпов А.О.";
 
     let encoded_msg = encode(INITMSG);
     println!("{DEL}");
@@ -26,12 +27,15 @@ fn main() {
 
     // Second task:
     let manchester = manchester_code(&encoded_msg[0..4]);
-    // println!("{manchester}");
     fs::write("../out/manchester.csv", manchester).expect("Can't write to manchester.csv");
     let nrz = nrz_code(&encoded_msg[0..4]);
     fs::write("../out/nrz.csv", nrz).expect("Can't write to nrz.csv");
     let rz = rz_code(&encoded_msg[0..4]);
     fs::write("../out/rz.csv", rz).expect("Can't write to rz.csv");
+    let ami = ami_code(&encoded_msg[0..4]);
+    fs::write("../out/ami.csv", ami).expect("Can't write to ami.csv");
+    let mlt3 = mlt3_code(&encoded_msg[0..4]);
+    fs::write("../out/mlt3.csv", mlt3).expect("Can't write to mlt3.csv");
 }
 
 
