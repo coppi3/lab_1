@@ -3,7 +3,7 @@ use std::fmt;
 use std::fs;
 use utils::first::{encode, V};
 use utils::manchester::manchester_code;
-
+use utils::nrz::nrz_code;
 const DEL: &str = "------------------------------------------------------";
 
 fn main() {
@@ -26,6 +26,8 @@ fn main() {
     let manchester = manchester_code(&encoded_msg[0..4]);
     // println!("{manchester}");
     fs::write("../out/manchester.csv", manchester).expect("Can't write to manchester.csv");
+    let nrz = nrz_code(&encoded_msg[0..4]);
+    fs::write("../out/nrz.csv", nrz).expect("Can't write to nrz.csv");
 }
 
 
